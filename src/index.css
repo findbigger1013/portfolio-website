@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Georgia", ui-serif, serif;
+  
+  --color-soft-pink: #F7BFD8;
+  --color-pale-rose: #FCE4EC;
+  --color-warm-white: #FFF9FB;
+  --color-lavender: #CDB7F6;
+  --color-misty-blue: #BFD7FF;
+  --color-light-gray: #F5F5F7;
+  
+  --color-neon-pink: #FF5FA2;
+  --color-hot-rose: #FF2E88;
+  --color-glow-purple: #A978FF;
+  --color-soft-cyan: #8BE8FF;
+  --color-dream-blue: #8BE8FF;
+  --color-star-yellow: #FFE89A;
+
+  --color-brand-text: #2D3748;
+  --color-brand-muted: #718096;
+}
+
+body {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 95, 162, 0.18), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(169, 120, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 50% 85%, rgba(139, 232, 255, 0.14), transparent 35%),
+    linear-gradient(135deg, #FFF7FB 0%, #FCE4EC 45%, #EEF3FF 100%);
+  background-attachment: fixed;
+  color: var(--color-brand-text);
+  margin: 0;
+  min-height: 100vh;
+}
