@@ -6,10 +6,10 @@ import { soundManager } from '../lib/sound';
 
 export function UserTestingAndFindings() {
   const tests = [
-    { title: "KMD Forum 2023", img: "[Testing Photo: KMD Forum 2023]" },
-    { title: "PLAY Exhibition 2024", img: "[Testing Photo: PLAY Exhibition 2024]" },
-    { title: "Controlled Experiment", img: "[Testing Photo: Dream sharing group]" },
-    { title: "Post-test Interview", img: "[Testing Photo: Interview session]" }
+    { title: "KMD Forum 2023", img: "images/dream-bloom/kmd-forum-2023.jpg"},
+    { title: "PLAY Exhibition 2024", img:  "images/dream-bloom/play-exhibition-2024.jpg"},
+    { title: "Controlled Experiment", img:"images/dream-bloom/dream-sharing-group.jpg" },
+    { title: "Post-test Interview", img: "images/dream-bloom/interview.jpg"}
   ];
 
   const quotes = [
@@ -64,7 +64,12 @@ export function UserTestingAndFindings() {
                   >
                     <FadeIn delay={0.1 * i} className="w-full h-full">
                       <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-white/40 border border-white/60 p-2 shadow-sm group-hover:shadow-[0_10px_30px_rgba(205,183,246,0.2)] group-hover:-translate-y-2 transition-all duration-500 transform rotate-1 group-hover:rotate-0">
-                        <PlaceholderImage text={test.img} className="w-full h-full !bg-white/50 border-none rounded-2xl" />
+                       <img
+  src={`${import.meta.env.BASE_URL}${test.img}`}
+  alt={test.title}
+  loading="lazy"
+className="w-full h-full object-contain rounded-2xl bg-white/40"
+/>
                       </div>
                       <div className="mt-4 text-center">
                          <p className="text-[11px] font-bold uppercase tracking-wider text-brand-text whitespace-nowrap overflow-hidden text-ellipsis">{test.title}</p>

@@ -16,7 +16,7 @@ export function PrototypeGallery() {
       en: "A quiet notification that turns dream arrival into a ritual.",
       zh: "将梦境到达转化为温柔的仪式感提醒。",
       keywords: "Remote Notification / Tangible Interaction",
-      placeholder: "[GIF Placeholder: Flower device opening and closing]",
+      placeholder: "images/dream-bloom/motion-01.png",
       icon: Flower2,
     },
     {
@@ -27,7 +27,7 @@ export function PrototypeGallery() {
       en: "Heart-rate data is translated into emotional colors.",
       zh: "心率数据被转化为情绪颜色。",
       keywords: "Emotion Visualization",
-      placeholder: "[GIF Placeholder: Sensor triggering light color changes]",
+      placeholder: "images/dream-bloom/motion-02.gif",
       icon: HeartPulse,
     },
     {
@@ -38,7 +38,7 @@ export function PrototypeGallery() {
       en: "The user records a dream through voice after waking up.",
       zh: "用户醒来后通过语音记录梦境。",
       keywords: "Voice Interface",
-      placeholder: "[GIF Placeholder: User recording a dream with the device]",
+      placeholder: "images/dream-bloom/motion-03.gif",
       icon: Mic,
     },
     {
@@ -49,7 +49,7 @@ export function PrototypeGallery() {
       en: "AI-generated dream images are printed as visual memories.",
       zh: "AI生成图像并由小型打印机输出。",
       keywords: "Visual Memory",
-      placeholder: "[GIF Placeholder: AI-generated dream image being printed]",
+     placeholder: "images/dream-bloom/motion-04.gif",
       icon: Printer,
     }
   ];
@@ -64,24 +64,32 @@ export function PrototypeGallery() {
     setSelectedGif(null);
   };
 
-  const MotionPlaceholder = ({ text, onClick, onEnter }: { text: string, onClick: () => void, onEnter: () => void }) => (
+  const MotionPlaceholder = ({ text, onClick, onEnter }: { text: string, onClick: () => void, onEnter: () => void }) => {
+  const isMedia = text.startsWith("images/") || text.startsWith("videos/");
+
+  return (
     <div 
       className="absolute inset-0 w-full h-full cursor-pointer group-hover:scale-105 transition-transform duration-700 select-none overflow-hidden bg-white/50 border border-white/60 flex items-center justify-center p-6 text-center"
       onClick={onClick}
       onMouseEnter={onEnter}
     >
-       {/* 
-         Instructions for User: 
-         To use a real GIF or Video, replace this component's content with:
-         <video src="/your-video.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-         OR 
-         <img src="/your-gif.gif" loading="lazy" className="w-full h-full object-cover" /> 
-       */}
-       <div className="absolute inset-0 bg-gradient-to-tr from-neon-pink/10 to-glow-purple/10 pointer-events-none" />
-       <span className="font-serif italic text-brand-muted/80 text-sm md:text-base relative z-10">{text}</span>
+      {isMedia ? (
+        <img
+          src={`${import.meta.env.BASE_URL}${text}`}
+          alt="Motion preview"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <span className="font-serif italic text-brand-muted/80 text-sm md:text-base relative z-10">
+          {text}
+        </span>
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-tr from-neon-pink/10 to-glow-purple/10 pointer-events-none" />
     </div>
   );
-
+};
   return (
     <section id="chapter-one-prototype" className="py-24 relative z-10 my-12 bg-white/10 backdrop-blur-sm border-y border-white/40">
       <div className="container mx-auto px-6 md:px-12 max-w-7xl">
